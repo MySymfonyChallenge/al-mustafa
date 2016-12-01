@@ -1,0 +1,5 @@
+services:
+    app_bundle.controller.application:
+        class: AppBundle\Controller\ApplicationController
+        arguments:
+            - "@ezpublish.api.repository"

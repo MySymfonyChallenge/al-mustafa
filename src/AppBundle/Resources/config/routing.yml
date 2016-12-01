@@ -1,0 +1,3 @@
+application:
+    path:   /application
+    defaults:  { _controller: app_bundle.controller.application:viewLocationAction }
