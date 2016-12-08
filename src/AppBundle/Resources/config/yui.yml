@@ -1,0 +1,7 @@
+system:
+    default:
+        yui:
+            modules:
+                navigationhubview-ez-template:
+                    type: 'template'
+                    path: %app_bundle.public_dir%/templates/navigationhub.hbt

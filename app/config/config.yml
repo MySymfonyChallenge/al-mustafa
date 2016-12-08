@@ -3,7 +3,8 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: env/docker.php }
-
+    - { resource: config_almustafa.yml }
+    
 # Configuration for Database connection, can have several connections used by eZ Repositories in ezplatform.yml
 doctrine:
     dbal:
@@ -88,7 +89,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        []
+    bundles:        [ AppBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~

@@ -1,0 +1,11 @@
+{% extends "AppBundle::pagelayout.html.twig" %}
+{% block content %}
+{%for n in nodes %}
+    <div>
+        <h2>
+            <a href="{{path(n)}}">{{ez_content_name(n.contentInfo)}}</a>
+        </h2>
+        <p>{{render(controller('ez_content:viewLocation',{'locationId':n.id, 'viewType':'line'}))}}</p>
+    </div>
+{%endfor%}
+{% endblock %}

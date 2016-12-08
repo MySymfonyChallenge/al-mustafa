@@ -3,3 +3,19 @@ services:
         class: AppBundle\Controller\ApplicationController
         arguments:
             - "@ezpublish.api.repository"
+    app_bundle.controller.home:
+        class: AppBundle\Controller\HomeController
+        arguments:
+            - "@ezpublish.api.repository"
+    ezplatform.controller.blog:
+        class: AppBundle\Controller\BlogController
+        arguments:
+            - '@templating'
+            - '@ezpublish.api.service.search'
+            - '@app_bundle.query_type.children'
+            - '%blog.location_id%'
+            - '%blog.posts_limit%'
+    app_bundle.query_type.children:
+        class: AppBundle\QueryType\ChildrenQueryType
+        tags:
+            - name: ezpublish.query_type

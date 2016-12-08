@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="{{ app.request.locale|replace({'_': '-'}) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block headstyle %}
+            {{ include( 'AppBundle:layout/head:style.html.twig' ) }}
+        {% endblock %}
+        {% block headscript %}
+            {{ include( 'AppBundle:layout/head:script.html.twig' ) }}
+        {% endblock %}
+        {% if content is defined and title is not defined %}
+            {% set title = ez_content_name( content ) %}
+        {% endif %}
+        <title>{{ title|default( 'Home' ) }}</title>
+        <meta name="generator" content="eZ Platform"/>
+        {% if content is defined and content.contentInfo.mainLocationId %}
+            <link rel="canonical" href="{{ path( 'ez_urlalias', {'locationId': content.contentInfo.mainLocationId} ) }}" />
+        {% endif %}
+    </head>
+    <body>
+        <div class="container">
+            {% include("AppBundle::header.html.twig") %}
+            <div> 
+                {{render(controller( "AppBundle:Menu:menu"))}}
+            </div>
+            <div>
+                {% block content %}{% endblock %}
+            </div>
+        {% include("AppBundle::footer.html.twig") %}
+    </div>
+</body>
+</html>

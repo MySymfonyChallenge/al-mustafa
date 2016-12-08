@@ -2,6 +2,7 @@
 namespace AppBundle\QueryType;
 use eZ\Publish\Core\QueryType\QueryType;
 use eZ\Publish\API\Repository\Values\Content\Query;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
 use eZ\Publish\API\Repository\Values\Content\LocationQuery;
 class ChildrenQueryType implements QueryType
 {
@@ -10,12 +11,20 @@ class ChildrenQueryType implements QueryType
         $options = [];
         $criteria = [
             new Query\Criterion\ParentLocationId($parameters['parent_location_id']),
-            new Query\Criterion\Visibility(Query\Criterion\Visibility::VISIBLE),
+            new Query\Criterion\Visibility(Query\Criterion\Visibility::VISIBLE)
         ];
+        if(isset($parameters['show_menu'])){
+            $criteria[] = new Query\Criterion\Field('show_menu', Criterion\Operator::EQ, 1);
+        }
         if (isset($parameters['excluded_content_types'])) {
             $criteria[] = new Query\Criterion\LogicalNot(
                 new Query\Criterion\ContentTypeIdentifier($parameters['excluded_content_types'])
             );
+        }        
+        if (isset($parameters['depth'])){
+          $criteria = [
+              new Query\Criterion\Location\Depth(Query\Criterion\Operator::EQ,$parameters['depth'])
+              ];
         }
         $options['filter'] = new Query\Criterion\LogicalAnd($criteria);
         $sortClauses = new Query\SortClause\Location\Priority(Query::SORT_ASC);
@@ -35,6 +44,7 @@ class ChildrenQueryType implements QueryType
         if (isset($parameters['offset'])) {
             $options['offset'] = $parameters['offset'];
         }
+
         return new LocationQuery($options);
     }
     public static function getName()

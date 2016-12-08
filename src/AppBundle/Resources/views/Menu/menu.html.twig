@@ -1,0 +1,41 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar">1</span>
+                <span class="icon-bar">2</span>
+                <span class="icon-bar">3</span>
+            </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/">{{"Home"|trans}}</a>
+                </li>
+                {% for key,temp in data %}
+                    <li {% if temp.0 is iterable %}class="dropdown">
+                        <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  href="#">{{key}}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% for dat in temp %}
+                                {% for subkey,subdat in dat %}
+                                    <li>
+                                        <a href="{{ path( 'ez_urlalias', {'locationId': subdat} ) }}">{{subkey}}</a>
+                                    </li>
+                                {% endfor %}
+
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {%else%}
+                        <li>
+                            <a href="{{ path( 'ez_urlalias', {'locationId': temp.0} ) }}">{{key}}</a>
+                        </li>
+                    {%endif%}
+                {% endfor %}
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
