@@ -23,8 +23,8 @@ class EventController extends Controller {
         $this->container = $container;
     }
 
-    function viewLocationAction(Request $request,ContentView $view,Location $location) {
-        
+    function viewLocationAction(Request $request, ContentView $view, Location $location) {
+
         $searchService = $this->repository->getSearchService();
         $locationService = $this->repository->getLocationService();
         $contentService = $this->repository->getContentService();
@@ -37,46 +37,28 @@ class EventController extends Controller {
 
         $form = $formBuilder->getForm();
         $form->handleRequest($request);
-        if($this->get( 'request')->isMethod('POST')){
-                 if ($form->isValid()) {
-            $rootLocation = $locationService->loadLocation($location->id);
-
-            try {
-                $this->repository->beginTransaction();
-
-                $contentDraft = $contentService->createContent(
-                        $data->payload, array(
-                    $locationService->newLocationCreateStruct($rootLocation->id),
-                        )
-                );
-
-                $content = $contentService->publishVersion($contentDraft->versionInfo);
-
-                $this->repository->commit();
-            } catch (Exception $e) {
-                $this->repository->rollback();
-                // @todo do something else if needed
-                throw $e;
+        if ($this->get('request')->isMethod('POST')) {
+            if ($form->isValid()) {
+                $rootLocation = $locationService->loadLocation($location->id);
+                try {
+                    $this->repository->beginTransaction();
+                    $contentDraft = $contentService->createContent(
+                            $data->payload, array(
+                        $locationService->newLocationCreateStruct($rootLocation->id),
+                            )
+                    );
+                    $content = $contentService->publishVersion($contentDraft->versionInfo);
+                    $this->repository->commit();
+                } catch (Exception $e) {
+                    $this->repository->rollback();
+                    throw $e;
+                }
+                return new Response('<div class="alert alert-success">Das Formular ist erfolgreich versendet worden!</div>');
+            } else {
+                return new Response('<div class="alert alert-danger">Beim Speichern Ihrer Formular ist ein Fehler aufgetreten.<br />Bitte versuchen Sie es noch einmal.</div>');
             }
-                return new Response( '<div class="alert alert-success">Das Formular ist erfolgreich versendet worden!</div>' );
-        } 
-         else {
-                return new Response( '<div class="alert alert-danger">Beim Speichern Ihrer Formular ist ein Fehler aufgetreten.<br />Bitte versuchen Sie es noch einmal.</div>' );
         }
-        } 
-
-
-        /*
-          $contentType = $contentTypeService->loadContentTypeByIdentifier( 'application' );
-          $contentCreateStruct = $contentService->newContentCreateStruct( $contentType , 'ger-DE');
-          $contentCreateStruct->setField( 'name', 'My title' );
-          $locationCreateStruct = $locationService->newLocationCreateStruct( 54 );
-
-          $draft = $contentService->createContent( $contentCreateStruct, array( $locationCreateStruct ) );
-          $content = $contentService->publishVersion( $draft->versionInfo );
-         */
         $view->addParameters(['form' => $form->createView()]);
         return $view;
     }
-
 }
