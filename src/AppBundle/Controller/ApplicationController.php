@@ -24,8 +24,7 @@ class ApplicationController extends Controller {
         $locationService = $this->repository->getLocationService();
         $contentService = $this->repository->getContentService();
         $contentTypeService = $this->repository->getContentTypeService();
-
-                
+        
         $query = new Query(
             array(
                 'filter' => new Criterion\LogicalAnd(
@@ -38,7 +37,7 @@ class ApplicationController extends Controller {
             )
         );
        $contentinfos = $searchService->findContentInfo($query);
-        $locations = [];
+       $locations = [];
         foreach ($contentinfos->searchHits as $result) {
             $locations[] = $locationService->loadLocations($result->valueObject)[0];
         }
@@ -53,7 +52,6 @@ class ApplicationController extends Controller {
             $content = $contentService->publishVersion( $draft->versionInfo );   
             return new Response($content->id);
         }
-        
         return new Response($locations[0]->id);
     }
 

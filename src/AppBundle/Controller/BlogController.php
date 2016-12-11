@@ -1,68 +1,47 @@
 <?php
+
 namespace AppBundle\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Templating\EngineInterface;
-use eZ\Publish\API\Repository\SearchService;
-use AppBundle\QueryType\ChildrenQueryType;
-class BlogController
-{
-    /** @var \Symfony\Bundle\TwigBundle\TwigEngine */
-    private $templating;
-    /** @var \eZ\Publish\API\Repository\SearchService */
-    private $searchService;
-    /** @var \AppBundle\QueryType\ChildrenQueryType */
-    private $childrenQueryType;
-    /** @var int */
-    private $blogLocationId;
-    /** @var int */
-    private $blogPostsLimit;
-    /**
-     * @param \Symfony\Component\Templating\EngineInterface $templating
-     * @param \eZ\Publish\API\Repository\SearchService $searchService
-     * @param \AppBundle\QueryType\ChildrenQueryType $childrenQueryType
-     * @param int $blogLocationId
-     * @param int $blogPostsLimit
-     */
-    public function __construct(
-        EngineInterface $templating,
-        SearchService $searchService,
-        ChildrenQueryType $childrenQueryType,
-        $blogLocationId,
-        $blogPostsLimit
-    ) {
-        $this->templating = $templating;
-        $this->searchService = $searchService;
-        $this->childrenQueryType = $childrenQueryType;
-        $this->blogLocationId = $blogLocationId;
-        $this->blogPostsLimit = $blogPostsLimit;
+
+use eZ\Publish\API\Repository\Repository;
+use eZ\Publish\Core\Repository\Values\Content\Location;
+use eZ\Publish\Core\MVC\Symfony\View\ContentView;
+use eZ\Publish\API\Repository\Values\Content\Query;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
+use eZ\Publish\Core\Pagination\Pagerfanta\ContentSearchAdapter;
+use Pagerfanta\Pagerfanta;
+use eZ\Publish\Core\MVC\Symfony\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+
+class BlogController extends Controller {
+
+    private $repository;
+
+    public function __construct(Repository $repository) {
+        $this->repository = $repository;
     }
-    /**
-     * Renders `blog_post` list for the given $page.
-     *
-     * @param int $page
-     *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
-    public function showBlogPostsAction($page)
-    {
-        $offset = $page * $this->blogPostsLimit - $this->blogPostsLimit;
-        $query = $this->childrenQueryType->getQuery([
-            'parent_location_id' => $this->blogLocationId,
-            'limit' => $this->blogPostsLimit,
-            'offset' => $offset,
-        ]);
-        $searchResults = $this->searchService->findLocations($query);
-        $renderedContent = $this->templating->render('AppBundle:parts:content_list.html.twig', [
-            'items' => $searchResults,
-            'viewType' => 'line',
-            'extraParams' => [
-                'page' => $page,
-            ],
-        ]);
-        $showMoreButton = $searchResults->totalCount > ($offset + count($searchResults->searchHits)) ? true : false;
-        return new JsonResponse([
-            'html' => $renderedContent,
-            'showLoadMoreButton' => $showMoreButton,
-        ]);
+
+    public function showBlogPostsAction(ContentView $view, Location $location, Request $request) {
+        $searchService = $this->repository->getSearchService();
+        $locationService = $this->repository->getLocationService();
+
+        $query = new Query(
+        array(
+            'filter' => new Criterion\LogicalAnd(
+              array(
+                new Criterion\ParentLocationId($location->id),
+                new Criterion\Visibility(Criterion\Visibility::VISIBLE),
+                new Criterion\ContentTypeIdentifier(array('blog_post','event'))
+                    ))
+                )
+        );
+        $query->sortClauses = [
+            new Query\SortClause\DatePublished(Query::SORT_DESC)
+        ];
+        $pager = new Pagerfanta(new ContentSearchAdapter($query, $searchService));
+        $pager->setMaxPerPage(10);
+        $pager->setCurrentPage($request->get('page', 1));
+        $view->addParameters(['pagerBlogs' => $pager, 'location' => $location]);
+        return $view;
     }
+
 }

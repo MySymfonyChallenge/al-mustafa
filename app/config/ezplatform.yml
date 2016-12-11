@@ -6,8 +6,6 @@ ezpublish:
             search:
                 engine: %search_engine%
                 connection: default
-
-    # Siteaccess configuration, with one siteaccess per default
     siteaccess:
         list: [de, en]
         groups:
@@ -16,8 +14,6 @@ ezpublish:
         default_siteaccess: de
         match:
             URIElement: 1
-
-    # System settings, grouped by siteaccess and/or siteaccess group
     system:
         de_group:
             cache_pool_name: '%cache_pool%'

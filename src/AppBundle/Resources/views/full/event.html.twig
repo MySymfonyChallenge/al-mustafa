@@ -1,0 +1,10 @@
+{% extends 'AppBundle::pagelayout.html.twig' %}
+
+{% block content %}
+{{ form_start(form, { 'attr': {'class': 'attendence_form'} },{'method': 'POST'}) }}
+    {{ form_widget(form) }}
+    <input id="location_id" type="hidden" value="{{location.id}}">
+    <button type="button" class="submit">Publish</button>
+{{ form_end(form) }}
+<div id="resultUpdate"></div>
+{% endblock %}

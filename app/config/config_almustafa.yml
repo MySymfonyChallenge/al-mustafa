@@ -3,7 +3,4 @@ imports:
     - { resource: views.yml }
 
 parameters:
-    # `blog` locationId
-    blog.location_id: 77
-    # `blog_post` limit on the `blog` page
     blog.posts_limit: 10

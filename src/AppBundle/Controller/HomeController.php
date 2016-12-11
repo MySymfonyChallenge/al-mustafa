@@ -7,6 +7,7 @@ use eZ\Bundle\EzPublishCoreBundle\Controller;
 use eZ\Publish\API\Repository\Repository;
 use eZ\Publish\API\Repository\Values\Content\Query;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
+use eZ\Publish\API\Repository\Values\Content\Location;
 
 class HomeController extends Controller {
 
@@ -16,7 +17,7 @@ class HomeController extends Controller {
         $this->repository = $repository;
     }
 
-    public function indexAction(ContentView $view, \eZ\Publish\API\Repository\Values\Content\Location $location) {
+    public function indexAction(ContentView $view, Location $location) {
 
         $searchService = $this->repository->getSearchService();
         $locationService = $this->repository->getLocationService();

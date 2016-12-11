@@ -11,17 +11,7 @@ ezpublish:
                         match:
                             Identifier\ContentType: home
                     blog:
-                        controller: ez_query:LocationQueryAction
-                        params:
-                            query:
-                                query_type: AppBundle:Children
-                                parameters:
-                                    parent_location_id: '%blog.location_id%'
-                                    limit: '%blog.posts_limit%'
-                                    sorting_content_type: blog_post
-                                    sorting_field: publication_date
-                                    sorting_order: desc
-                                assign_results_to: posts
+                        controller: app_bundle.controller.blog:showBlogPostsAction
                         template: AppBundle:full:blog.html.twig
                         match:
                             Identifier\ContentType: blog
@@ -29,6 +19,11 @@ ezpublish:
                         template: AppBundle:full:blog_post.html.twig
                         match:
                             Identifier\ContentType: blog_post
+                    event:
+                        controller: app_bundle.controller.event:viewLocationAction
+                        template: AppBundle:full:event.html.twig
+                        match:
+                            Identifier\ContentType: event
                 line:
                     blog_post:
                         template: AppBundle:line:blog_post.html.twig

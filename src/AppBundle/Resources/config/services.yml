@@ -7,14 +7,15 @@ services:
         class: AppBundle\Controller\HomeController
         arguments:
             - "@ezpublish.api.repository"
-    ezplatform.controller.blog:
+    app_bundle.controller.event:
+        class: AppBundle\Controller\EventController
+        arguments:
+            - "@ezpublish.api.repository"
+            - "@service_container"
+    appbundle.controller.blog:
         class: AppBundle\Controller\BlogController
         arguments:
-            - '@templating'
-            - '@ezpublish.api.service.search'
-            - '@app_bundle.query_type.children'
-            - '%blog.location_id%'
-            - '%blog.posts_limit%'
+            - '@ezpublish.api.repository'
     app_bundle.query_type.children:
         class: AppBundle\QueryType\ChildrenQueryType
         tags:

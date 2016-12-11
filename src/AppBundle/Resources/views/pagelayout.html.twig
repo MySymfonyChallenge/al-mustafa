@@ -21,10 +21,10 @@
     <body>
         <div class="container">
             {% include("AppBundle::header.html.twig") %}
-            <div> 
+            <div class="menu"> 
                 {{render(controller( "AppBundle:Menu:menu"))}}
             </div>
-            <div>
+            <div class="content">
                 {% block content %}{% endblock %}
             </div>
         {% include("AppBundle::footer.html.twig") %}
