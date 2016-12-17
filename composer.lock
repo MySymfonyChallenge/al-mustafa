@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a1b121a796bba96483443690f0c76867",
-    "content-hash": "98cabe362e5b2b0bd32e07845d65b8d7",
+    "hash": "252f60737d2a0eafb087bf3b7f4e1923",
+    "content-hash": "88cde7b1c9486fff7f4031f4eff41848",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -908,16 +908,16 @@
         },
         {
             "name": "ezsystems/platform-ui-assets-bundle",
-            "version": "v3.0.2",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/PlatformUIAssetsBundle.git",
-                "reference": "d8a6202e51823a742b3234412e81087298b90b15"
+                "reference": "f54e6b0aa75ef996698100d4fd23b6da884eeffa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/PlatformUIAssetsBundle/zipball/d8a6202e51823a742b3234412e81087298b90b15",
-                "reference": "d8a6202e51823a742b3234412e81087298b90b15",
+                "url": "https://api.github.com/repos/ezsystems/PlatformUIAssetsBundle/zipball/f54e6b0aa75ef996698100d4fd23b6da884eeffa",
+                "reference": "f54e6b0aa75ef996698100d4fd23b6da884eeffa",
                 "shasum": ""
             },
             "require": {
@@ -940,7 +940,7 @@
                 }
             ],
             "description": "External assets dependencies for PlatformUIBundle",
-            "time": "2016-11-30 15:42:31"
+            "time": "2016-12-15 09:20:55"
         },
         {
             "name": "ezsystems/platform-ui-bundle",
@@ -2094,6 +2094,45 @@
             "time": "2015-12-09 17:26:34"
         },
         {
+            "name": "netgen/ez-forms-bundle",
+            "version": "1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/netgen/NetgenEzFormsBundle.git",
+                "reference": "d3417718d081635f6619d615dda153d32b32e589"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/netgen/NetgenEzFormsBundle/zipball/d3417718d081635f6619d615dda153d32b32e589",
+                "reference": "d3417718d081635f6619d615dda153d32b32e589",
+                "shasum": ""
+            },
+            "require": {
+                "ezsystems/ezpublish-kernel": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Netgen\\Bundle\\EzFormsBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Netgen",
+                    "homepage": "http://www.netgenlabs.com"
+                }
+            ],
+            "description": "Integration of Symfony's Form component with eZ Publish 5 Public API",
+            "time": "2016-11-28 21:05:45"
+        },
+        {
             "name": "nikic/php-parser",
             "version": "v2.1.1",
             "source": {
@@ -2572,16 +2611,16 @@
         },
         {
             "name": "sensio/framework-extra-bundle",
-            "version": "v3.0.16",
+            "version": "v3.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-                "reference": "507a15f56fa7699f6cc8c2c7de4080b19ce22546"
+                "reference": "c38bc608e12e81089d5d9dfbf72775ed553c61af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/507a15f56fa7699f6cc8c2c7de4080b19ce22546",
-                "reference": "507a15f56fa7699f6cc8c2c7de4080b19ce22546",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/c38bc608e12e81089d5d9dfbf72775ed553c61af",
+                "reference": "c38bc608e12e81089d5d9dfbf72775ed553c61af",
                 "shasum": ""
             },
             "require": {
@@ -2590,14 +2629,20 @@
                 "symfony/framework-bundle": "~2.3|~3.0"
             },
             "require-dev": {
+                "symfony/asset": "~2.7|~3.0",
                 "symfony/browser-kit": "~2.3|~3.0",
                 "symfony/dom-crawler": "~2.3|~3.0",
                 "symfony/expression-language": "~2.4|~3.0",
                 "symfony/finder": "~2.3|~3.0",
-                "symfony/phpunit-bridge": "~2.7|~3.0",
+                "symfony/phpunit-bridge": "~3.2",
+                "symfony/psr-http-message-bridge": "^0.3",
                 "symfony/security-bundle": "~2.4|~3.0",
+                "symfony/templating": "~2.3|~3.0",
+                "symfony/translation": "~2.3|~3.0",
                 "symfony/twig-bundle": "~2.3|~3.0",
-                "twig/twig": "~1.11|~2.0"
+                "symfony/yaml": "~2.3|~3.0",
+                "twig/twig": "~1.11|~2.0",
+                "zendframework/zend-diactoros": "^1.3"
             },
             "suggest": {
                 "symfony/expression-language": "",
@@ -2630,7 +2675,7 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2016-03-25 17:08:27"
+            "time": "2016-12-14 08:30:06"
         },
         {
             "name": "sensio/generator-bundle",
@@ -3539,16 +3584,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.8.14",
+            "version": "v2.8.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "6ceca5b4154c80839270c38aa65373de76127df7"
+                "reference": "3ec15b9379ebb0758e296d4193926a7b4121a964"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/6ceca5b4154c80839270c38aa65373de76127df7",
-                "reference": "6ceca5b4154c80839270c38aa65373de76127df7",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/3ec15b9379ebb0758e296d4193926a7b4121a964",
+                "reference": "3ec15b9379ebb0758e296d4193926a7b4121a964",
                 "shasum": ""
             },
             "require": {
@@ -3670,7 +3715,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-11-21 02:24:51"
+            "time": "2016-12-13 12:16:34"
         },
         {
             "name": "tedivm/stash",
@@ -3847,16 +3892,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.28.2",
+            "version": "v1.29.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "b22ce0eb070e41f7cba65d78fe216de29726459c"
+                "reference": "74f723e542368ca2080b252740be5f1113ebb898"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/b22ce0eb070e41f7cba65d78fe216de29726459c",
-                "reference": "b22ce0eb070e41f7cba65d78fe216de29726459c",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/74f723e542368ca2080b252740be5f1113ebb898",
+                "reference": "74f723e542368ca2080b252740be5f1113ebb898",
                 "shasum": ""
             },
             "require": {
@@ -3869,7 +3914,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.28-dev"
+                    "dev-master": "1.29-dev"
                 }
             },
             "autoload": {
@@ -3904,7 +3949,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-11-23 18:41:40"
+            "time": "2016-12-13 17:28:18"
         },
         {
             "name": "white-october/pagerfanta-bundle",
@@ -5727,16 +5772,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.30",
+            "version": "4.8.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a534e04d0bd39c557c2881c341efd06fa6f1292a"
+                "reference": "98b2b39a520766bec663ff5b7ff1b729db9dbfe3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a534e04d0bd39c557c2881c341efd06fa6f1292a",
-                "reference": "a534e04d0bd39c557c2881c341efd06fa6f1292a",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/98b2b39a520766bec663ff5b7ff1b729db9dbfe3",
+                "reference": "98b2b39a520766bec663ff5b7ff1b729db9dbfe3",
                 "shasum": ""
             },
             "require": {
@@ -5795,7 +5840,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-12-01 17:05:48"
+            "time": "2016-12-09 02:45:31"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -6189,16 +6234,16 @@
         },
         {
             "name": "sebastian/recursion-context",
-            "version": "1.0.4",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/recursion-context.git",
-                "reference": "938df7a6478e72795e5f8266cff24d06e3136f2e"
+                "reference": "913401df809e99e4f47b27cdd781f4a258d58791"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/938df7a6478e72795e5f8266cff24d06e3136f2e",
-                "reference": "938df7a6478e72795e5f8266cff24d06e3136f2e",
+                "url": "https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/913401df809e99e4f47b27cdd781f4a258d58791",
+                "reference": "913401df809e99e4f47b27cdd781f4a258d58791",
                 "shasum": ""
             },
             "require": {
@@ -6238,7 +6283,7 @@
             ],
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
-            "time": "2016-11-15 06:55:36"
+            "time": "2015-11-11 19:50:13"
         },
         {
             "name": "sebastian/version",
@@ -6334,8 +6379,5 @@
     "platform": {
         "php": "~5.5|~7.0"
     },
-    "platform-dev": [],
-    "platform-overrides": {
-        "php": "5.6"
-    }
+    "platform-dev": []
 }
