@@ -3,4 +3,20 @@ imports:
     - { resource: views.yml }
 
 parameters:
-    blog.posts_limit: 10
+    mailer_transport:  smtp
+    mailer_host:       mailtrap.io
+    mailer_user:       53236674ca83117ed
+    mailer_password:   3976d6e7a03453
+    mailer_port:       2525
+    
+    blog.posts_limit: 10    
+    # e-mail address used for form submission
+    app.contact_form.sender_email: no-reply@al-mustafa.de
+    # e-mail address used as a message recipient
+    app.contact_form.recipient_email: info@al-mustafa.de
+    
+    app.applications.location_id: 54
+twig:
+    form:
+        #resources: ['bootstrap_3_layout.html.twig']
+        resources: ['bootstrap_3_horizontal_layout.html.twig']

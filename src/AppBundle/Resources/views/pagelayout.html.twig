@@ -19,15 +19,17 @@
         {% endif %}
     </head>
     <body>
-        <div class="container">
+    <div class="full-page">
             {% include("AppBundle::header.html.twig") %}
             <div class="menu"> 
                 {{render(controller( "AppBundle:Menu:menu"))}}
             </div>
-            <div class="content">
+            <div class="container">
                 {% block content %}{% endblock %}
             </div>
-        {% include("AppBundle::footer.html.twig") %}
+            <footer class="footer">                
+                {% include("AppBundle::footer.html.twig") %}
+            </footer>
     </div>
 </body>
 </html>

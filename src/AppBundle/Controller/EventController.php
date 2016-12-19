@@ -10,17 +10,19 @@ use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 use eZ\Publish\Core\MVC\Symfony\View\ContentView;
 use eZ\Publish\Core\Repository\Values\Content\Location;
 use Symfony\Component\HttpFoundation\Response;
-use RuntimeException;
+use AppBundle\Mail\Notification;
 use Exception;
 
 class EventController extends Controller {
 
     private $repository;
     protected $container;
+    protected $notification;
 
-    public function __construct(Repository $repository, Container $container) {
+    public function __construct(Repository $repository, Container $container, Notification $notification) {
         $this->repository = $repository;
         $this->container = $container;
+        $this->notification = $notification;
     }
 
     function viewLocationAction(Request $request, ContentView $view, Location $location) {
@@ -32,17 +34,18 @@ class EventController extends Controller {
         $userService = $this->repository->getUserService();
         $alreadyApplied = FALSE;
         $notLoggedIn = FALSE;
+        $loggedinUser = FALSE;
 
         $contentType = $contentTypeService->loadContentTypeByIdentifier('attendee');
         $contentCreateStruct = $contentService->newContentCreateStruct($contentType, 'ger-DE');
         $data = new DataWrapper($contentCreateStruct, $contentCreateStruct->contentType);
         $formBuilder = $this->container->get('form.factory')->createBuilder('ezforms_create_content', $data);
-        
+
         $childrenLocations = $locationService->loadLocationChildren($location);
-        if ($this->getUser()){
-            $loggedinUserID = $this->getUser()->getAPIUser()->id;
+        if ($this->getUser()) {
+            $loggedinUser = $this->getUser()->getAPIUser();
             foreach ($childrenLocations->locations as $child) {
-                if ($child->contentInfo->ownerId == $loggedinUserID) {
+                if ($child->contentInfo->ownerId == $loggedinUser->id) {
                     $alreadyApplied = $child->contentInfo->publishedDate;
                 }
             }
@@ -55,6 +58,10 @@ class EventController extends Controller {
         if ($this->get('request')->isMethod('POST')) {
             if ($form->isValid() && !$alreadyApplied) {
                 $rootLocation = $locationService->loadLocation($location->id);
+                $info = array();
+                $info['first_name'] = $form->getData()->payload->fields[0]->value->text;
+                $info['last_name'] = $form->getData()->payload->fields[1]->value->text;
+                $info['text'] = "has applied for the research trip " . $rootLocation->contentInfo->name;
                 try {
                     $this->repository->beginTransaction();
                     $contentDraft = $contentService->createContent(
@@ -64,6 +71,7 @@ class EventController extends Controller {
                     );
                     $content = $contentService->publishVersion($contentDraft->versionInfo);
                     $this->repository->commit();
+                    $this->notification->send($info);
                 } catch (Exception $e) {
                     $this->repository->rollback();
                     throw $e;
@@ -73,7 +81,7 @@ class EventController extends Controller {
                 return new Response('<div class="alert alert-danger">Beim Speichern Ihrer Formular ist ein Fehler aufgetreten oder Sie sind schon Angemeldet.</div>');
             }
         }
-        $view->addParameters(['form' => $form->createView(), 'alreadyApplied' => $alreadyApplied, 'notLoggedIn' => $notLoggedIn]);
+        $view->addParameters(['form' => $form->createView(), 'alreadyApplied' => $alreadyApplied, 'notLoggedIn' => $notLoggedIn,'user' => $loggedinUser]);
         return $view;
     }
 

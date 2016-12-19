@@ -1,18 +1,17 @@
 {% extends 'AppBundle::pagelayout.html.twig' %}
 
 {% block content %}
-    <h1>{{ez_content_name(content)}}</h1>
-    <div>{{ ez_field( content, "description" ).value }}</div>
+    <h1>Application</h1>
+    <div>Application Description</div>
     {% if (alreadyApplied) %}
         <span>You have Already Applied for this Trip on {{alreadyApplied|date('m.d.Y H:i:s')}}</span>
     {% else %}
         {% if notLoggedIn %}
             <div>Please <a href="{{path('login')}}">login</a> here to be able to register for this Trip.</div>
             {% else %}
-                {{ form_start(form, { 'attr': {'class': 'attendence_form'} },{'method': 'POST'}) }}
+                {{ form_start(form, { 'attr': {'class': 'application_form'} },{'method': 'POST'}) }}
                 {{ form_widget(form.first_name, {'value' : ez_field_value(user.content,'first_name') }) }}
                 {{ form_widget(form.last_name, {'value' : ez_field_value(user.content,'last_name')}) }}
-                {{ form_widget(form.cv) }}
                 <button type="button" class="submit btn btn-primary">Submit</button>
                 {{ form_end(form) }}
                 <div id="resultUpdate"></div>
