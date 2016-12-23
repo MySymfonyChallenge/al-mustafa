@@ -32,3 +32,7 @@ services:
             - '@templating'
             - '%app.contact_form.sender_email%'
             - '%app.contact_form.recipient_email%'
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }

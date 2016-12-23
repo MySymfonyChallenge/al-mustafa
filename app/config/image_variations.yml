@@ -2,21 +2,19 @@ ezpublish:
     system:
         default:
             image_variations:
-                # dedicated to images embedded in the blog_post body
-                blog_post_full_width:
+                teaser:
                     reference: ~
                     filters:
-                        - { name: geometry/scalewidthdownonly, params: [800] }
-
-                blog_author:
+                        - { name: geometry/scaleexact, params: [1170,300] }
+                homepage_bottom:
                     reference: ~
                     filters:
-                        - { name: geometry/scaleexact, params: [60, 60] }
-                blog_post_author:
+                        - { name: geometry/scaledownonly, params: [555,400] }
+                homepage_thumbnail:
                     reference: ~
                     filters:
-                        - { name: geometry/scaleexact, params: [80, 80] }
+                        - { name: geometry/scaledownonly, params: [150,400] }
                 blog_thumbnail:
                     reference: ~
                     filters:
-                        - { name: geometry/scalewidthdownonly, params: [710] }
+                        - { name: geometry/scaledownonly, params: [250,400] }

@@ -24,8 +24,10 @@
             <div class="menu"> 
                 {{render(controller( "AppBundle:Menu:menu"))}}
             </div>
-            <div class="container">
-                {% block content %}{% endblock %}
+            <div class="main-content">
+                <div class="container">
+                    {% block content %}{% endblock %}
+                </div>
             </div>
             <footer class="footer">                
                 {% include("AppBundle::footer.html.twig") %}

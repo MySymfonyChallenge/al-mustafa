@@ -2,11 +2,11 @@
 
 {% block content %}
     <div class="blog">
-        <div class="blog-top-banner">
+        <!-- <div class="blog-top-banner">
             <div class="container">
                 Developer<span>Blog</span>
             </div>
-        </div>
+        </div> -->
         <div class="container">
         {% for blog in pagerBlogs %}
             {{render_esi(controller('ez_content:viewLocation',{'locationId':blog.contentInfo.mainLocationId,'viewType':'line'}) )}}

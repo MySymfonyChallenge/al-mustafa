@@ -26,9 +26,8 @@ class HomeController extends Controller {
                 array(
             'filter' => new Criterion\LogicalAnd(
                     array(
-                new Criterion\ParentLocationId($location->id),
                 new Criterion\Visibility(Criterion\Visibility::VISIBLE),
-                        new Criterion\ContentTypeIdentifier('folder')
+                new Criterion\ContentTypeIdentifier('blog_post')
                     )
             )
                 )
@@ -37,18 +36,17 @@ class HomeController extends Controller {
             new Query\SortClause\DatePublished(Query::SORT_DESC)
         ];
         
-        $query->limit=10;
+        $query->limit=2;
 
-        $results = $searchService->findContentInfo($query);
+        $results = $searchService->findContent($query);
 
         $contents = [];
         $locations = [];
         foreach ($results->searchHits as $result) {
             $contents[] = $result->valueObject;
-            $locations[] = $locationService->loadLocations($result->valueObject)[0];
         }
 
-        $view->addParameters(["items" => $contents, "nodes" => $locations]);
+        $view->addParameters(["items" => $contents ]);
         return $view;
     }
 
