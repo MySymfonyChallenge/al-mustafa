@@ -29,3 +29,7 @@ ezpublish:
                         template: AppBundle:line:blog_post.html.twig
                         match:
                             Identifier\ContentType: blog_post
+                    event:
+                        template: AppBundle:line:event.html.twig
+                        match:
+                            Identifier\ContentType: event

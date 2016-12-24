@@ -27,7 +27,7 @@ class HomeController extends Controller {
             'filter' => new Criterion\LogicalAnd(
                     array(
                 new Criterion\Visibility(Criterion\Visibility::VISIBLE),
-                new Criterion\ContentTypeIdentifier('blog_post')
+                new Criterion\ContentTypeIdentifier(array('blog_post'))
                     )
             )
                 )
