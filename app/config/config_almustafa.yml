@@ -18,5 +18,5 @@ parameters:
     app.applications.location_id: 54
 twig:
     form:
-        #resources: ['bootstrap_3_layout.html.twig']
-        resources: ['bootstrap_3_horizontal_layout.html.twig']
+        resources: ['bootstrap_3_layout.html.twig']
+        #resources: ['bootstrap_3_horizontal_layout.html.twig']

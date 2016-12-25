@@ -1,6 +1,7 @@
 {% extends 'AppBundle::pagelayout.html.twig' %}
 
 {% block content %}
+    {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
     <div class="event-wrapper">
         <h1>{{ez_content_name(content)}}</h1>
         <div class="event-text">
