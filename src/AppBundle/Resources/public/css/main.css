@@ -133,7 +133,9 @@ body {
     border-bottom: #00b3b3 2px solid;
     padding-bottom: 25px;
 }
-
+.blog-post-line-intro {
+    text-align: justify;
+}
 
 
 @media (min-width: 768px) {
@@ -216,6 +218,10 @@ body {
         border-top: solid 4px #00b3b3;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
+    }
+    .container {
+        padding-left: 0px;
+        padding-right: 0px;
     }
 }
 @media (max-width: 767px){

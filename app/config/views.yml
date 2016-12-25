@@ -10,26 +10,30 @@ ezpublish:
                         template: AppBundle:full:home.html.twig
                         match:
                             Identifier\ContentType: home
-                    blog:
+                    blog_full:
                         controller: app_bundle.controller.blog:showBlogPostsAction
                         template: AppBundle:full:blog.html.twig
                         match:
                             Identifier\ContentType: blog
-                    blog_post:
+                    blog_post_full:
                         template: AppBundle:full:blog_post.html.twig
                         match:
                             Identifier\ContentType: blog_post
-                    event:
+                    event_full:
                         controller: app_bundle.controller.event:viewLocationAction
                         template: AppBundle:full:event.html.twig
                         match:
                             Identifier\ContentType: event
+                    article_full:
+                        template: AppBundle:full:article.html.twig
+                        match:
+                            Identifier\ContentType: article
                 line:
-                    blog_post:
+                    blog_post_line:
                         template: AppBundle:line:blog_post.html.twig
                         match:
                             Identifier\ContentType: blog_post
-                    event:
+                    event_line:
                         template: AppBundle:line:event.html.twig
                         match:
                             Identifier\ContentType: event
