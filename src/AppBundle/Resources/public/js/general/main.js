@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     $('.attendence_form .submit').click(function () {
         $(".attendence_form").ajaxSubmit({
             type: 'post',
@@ -12,7 +11,13 @@ $(document).ready(function () {
             }
         });
     });
-    $('.carousel').carousel({
-        interval: 2000
+    $body = $("body");
+    $(document).on({
+        ajaxStart: function () {
+            $body.addClass("loading");
+        },
+        ajaxStop: function () {
+            $body.removeClass("loading");
+        }
     });
 });
