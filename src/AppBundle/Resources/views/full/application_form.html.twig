@@ -1,5 +1,6 @@
 {% javascripts '@AppBundle/Resources/public/js/specific/application.js' %}
 <link type="text/css" rel="stylesheet" href="{{ asset('bundles/app/css/application_form.css') }}">
+<link type="text/css" rel="stylesheet" href="{{ asset('bundles/app/css/bootstrap-datepicker3.min.css') }}">
 
 <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
@@ -65,8 +66,19 @@
     <div class="row setup-content" id="step-3">
         <div class="col-md-12">
           <h3> Step 3</h3>
-          <button class="btn btn-success btn-lg pull-right" type="submit">Submit</button>
+          <div class="form-group">
+            <label class="control-label">Company Address</label>
+            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
+          </div>
+          <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
         </div>
-      </div>
-{{ form_end(form) }} 
+     </div>
+     <div class="row setup-content" id="step-4">
+        <div class="col-md-12">
+          <h3>Step 4</h3>
+          <button class="submit btn btn-success" type="button">Submit</button>
+        </div>
+     </div>
+    {{ form_end(form) }}
+    <div id="resultUpdate"></div>
 </div>
