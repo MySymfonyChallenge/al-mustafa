@@ -8,8 +8,8 @@
     {% else %}
         {% if notLoggedIn %}
             <div>Please <a href="{{path('login')}}">login</a> here to be able to register for this Trip.</div>
-            {% else %}
-                {% include("AppBundle:full:application_form.html.twig") %}
+        {% else %}
+            {% include("AppBundle:full:application_form.html.twig") %}
         {% endif %}
     {% endif %}
 {% endblock %}
