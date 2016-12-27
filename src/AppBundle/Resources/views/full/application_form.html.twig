@@ -1,0 +1,72 @@
+{% javascripts '@AppBundle/Resources/public/js/specific/application.js' %}
+<link type="text/css" rel="stylesheet" href="{{ asset('bundles/app/css/application_form.css') }}">
+
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+<div class="container">
+<div class="stepwizard">
+    <div class="stepwizard-row setup-panel">
+      <div class="stepwizard-step">
+        <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+        <p>Personal Information</p>
+      </div>
+      <div class="stepwizard-step">
+        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+        <p>Education</p>
+      </div>
+      <div class="stepwizard-step">
+        <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+        <p>Freunde und Bekannte</p>
+      </div>
+      <div class="stepwizard-step">
+        <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+        <p>Zertifikate</p>
+      </div>
+    </div>
+  </div>
+    {{ form_start(form, { 'attr': {'class': 'application_form'} },{'method': 'POST'}) }}
+    <div class="row setup-content" id="step-1">
+        <div class="col-md-12">
+          <h3>Personal Information</h3>
+          <div class="form-group">
+            <label class="control-label">First Name</label>
+            {{ form_widget(form.first_name, {'value' : ez_field_value(user.content,'first_name') }) }}
+          </div>
+          <div class="form-group">
+            <label class="control-label">Last Name</label>
+            {{ form_widget(form.last_name, {'value' : ez_field_value(user.content,'last_name')}) }}        
+          </div>
+          <div class="form-group">
+            <label class="control-label">Geburstag</label>
+            {{ form_widget(form.birthday)}}
+          </div>
+          <div class="form-group">
+            <label class="control-label">Address</label>
+            <textarea required="required" class="form-control" placeholder="Enter your address" ></textarea>
+          </div>
+          <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+        </div>
+    </div>
+    <div class="row setup-content" id="step-2">
+        <div class="col-md-12">
+          <h3> Step 2</h3>
+          <div class="form-group">
+            <label class="control-label">Company Name</label>
+            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+          </div>
+          <div class="form-group">
+            <label class="control-label">Company Address</label>
+            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
+          </div>
+          <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+        </div>
+    </div>
+    <div class="row setup-content" id="step-3">
+        <div class="col-md-12">
+          <h3> Step 3</h3>
+          <button class="btn btn-success btn-lg pull-right" type="submit">Submit</button>
+        </div>
+      </div>
+{{ form_end(form) }} 
+</div>
