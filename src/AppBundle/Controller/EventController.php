@@ -40,7 +40,15 @@ class EventController extends Controller {
         $contentCreateStruct = $contentService->newContentCreateStruct($contentType, 'ger-DE');
         $data = new DataWrapper($contentCreateStruct, $contentCreateStruct->contentType);
         $formBuilder = $this->container->get('form.factory')->createBuilder('ezforms_create_content', $data);
-
+        $formBuilder->add('birthday','birthday', [
+                          'widget' => 'single_text',
+                          'format' => 'dd.MM.yyyy',
+                            'attr' => [
+                                'class' => 'datepicker',
+                                'data-provide' => 'datepicker',
+                                'data-date-format' => 'dd.mm.yyyy'
+                                ]
+                        ]);
         $childrenLocations = $locationService->loadLocationChildren($location);
         if ($this->getUser()) {
             $loggedinUser = $this->getUser()->getAPIUser();
