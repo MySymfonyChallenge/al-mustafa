@@ -1,13 +1,19 @@
 <div class="header-top"></div>
 <div class="container header-container">
-    <div class="links-header">
-        <span class="diamond-icon"><img src="{{ asset('bundles/app/img/diamond.png') }}"></span>
+    <div class="name-header">
         {% if(app.user) %}
-            <a href="{{path('logout')}}" >logout</a>
-        {% else %}
-            <a href="{{path('login')}}" >Login</a>
+            Hi {{ez_field_value(app.user.getAPIUser.content,'first_name')}}!<br />
         {% endif %}
-        <span class="diamond-icon"><img src="{{ asset('bundles/app/img/diamond.png') }}"></span><a href="{{path('ez_user_register')}}">Registration</a>
+    </div>
+    <div class="links-header">
+        
+        {% if(app.user) %}
+            <span class="diamond-icon"><img src="{{ asset('bundles/app/img/diamond.png') }}"></span><a href="{{path('logout')}}" >logout</a>
+            <span class="diamond-icon"><img src="{{ asset('bundles/app/img/diamond.png') }}"></span><a href="{{path('application')}}">Bewerbung</a>
+        {% else %}
+            <span class="diamond-icon"><img src="{{ asset('bundles/app/img/diamond.png') }}"></span><a href="{{path('login')}}" >Login</a>
+            <span class="diamond-icon"><img src="{{ asset('bundles/app/img/diamond.png') }}"></span><a href="{{path('ez_user_register')}}">Registration</a>
+        {% endif %}        
         <span class="diamond-icon"><img src="{{ asset('bundles/app/img/diamond.png') }}"></span><a href="/impressum">Impressum</a>
     </div>
     <a href="/"><img src="{{ asset('bundles/app/img/logo.png') }}" class="logo img-responsive"></a>

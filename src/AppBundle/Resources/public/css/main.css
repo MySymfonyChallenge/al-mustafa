@@ -39,6 +39,12 @@ body {
 .links-header {
     position: absolute;
     top: 25%;
+    right: 0%;
+    padding-left: 30px;
+}
+.name-header {
+    position: absolute;
+    top: 25%;
     left: 0%;
     padding-left: 30px;
 }

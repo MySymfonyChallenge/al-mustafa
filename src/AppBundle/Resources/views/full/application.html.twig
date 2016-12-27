@@ -9,12 +9,7 @@
         {% if notLoggedIn %}
             <div>Please <a href="{{path('login')}}">login</a> here to be able to register for this Trip.</div>
             {% else %}
-                {{ form_start(form, { 'attr': {'class': 'application_form'} },{'method': 'POST'}) }}
-                {{ form_widget(form.first_name, {'value' : ez_field_value(user.content,'first_name') }) }}
-                {{ form_widget(form.last_name, {'value' : ez_field_value(user.content,'last_name')}) }}
-                <button type="button" class="submit btn btn-primary">Submit</button>
-                {{ form_end(form) }}
-                <div id="resultUpdate"></div>
+                {% include("AppBundle:full:application_form.html.twig") %}
         {% endif %}
     {% endif %}
 {% endblock %}
