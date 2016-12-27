@@ -37,7 +37,15 @@ class ApplicationController extends Controller {
         $contentCreateStruct = $contentService->newContentCreateStruct($contentType, 'ger-DE');
         $data = new DataWrapper($contentCreateStruct, $contentCreateStruct->contentType);
         $formBuilder = $this->container->get('form.factory')->createBuilder('ezforms_create_content', $data);
-
+        $formBuilder->add('birthday','birthday', [
+                          'widget' => 'single_text',
+                          'format' => 'dd.MM.yyyy',
+                            'attr' => [
+                                'class' => 'datepicker',
+                                'data-provide' => 'datepicker',
+                                'data-date-format' => 'dd.mm.yyyy'
+                                ]
+                        ]);
         $location = $locationService->loadLocation($this->application_location_id);
         $childrenLocations = $locationService->loadLocationChildren($location);
 
