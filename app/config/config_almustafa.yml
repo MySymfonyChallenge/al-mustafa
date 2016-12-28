@@ -15,7 +15,7 @@ parameters:
     # e-mail address used as a message recipient
     app.contact_form.recipient_email: info@al-mustafa.de
     
-    app.applications.location_id: 54
+    app.applications.location_id: 121
 twig:
     form:
         resources: ['bootstrap_3_layout.html.twig']
