@@ -37,14 +37,6 @@
             <label class="control-label">Last Name</label>
             {{ form_widget(form.last_name, {'value' : ez_field_value(user.content,'last_name')}) }}        
           </div>
-          <div class="form-group">
-            <label class="control-label">Geburstag</label>
-            {{ form_widget(form.birthday)}}
-          </div>
-          <div class="form-group">
-            <label class="control-label">Address</label>
-            <textarea required="required" class="form-control" placeholder="Enter your address" ></textarea>
-          </div>
           <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
         </div>
     </div>
@@ -52,12 +44,8 @@
         <div class="col-md-12">
           <h3> Step 2</h3>
           <div class="form-group">
-            <label class="control-label">Company Name</label>
-            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
-          </div>
-          <div class="form-group">
-            <label class="control-label">Company Address</label>
-            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
+            <label class="control-label">Geburstag</label>
+            {{ form_widget(form.birthday)}}
           </div>
           <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
         </div>
