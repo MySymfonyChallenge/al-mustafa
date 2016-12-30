@@ -248,6 +248,13 @@ body.loading .modal {
     background-color: #b7965d;    
     /* background-image: url(../img/diamond.png); */
 }
+.home-seprator {
+    width: 9px;
+    background-image: url(../img/diamond.png);
+    height: 109px;
+    float: left;
+    margin-left: -50px;
+}
 @media (min-width: 768px) {
     .navbar-inverse .navbar-nav>li>a {
         float: left;
@@ -376,13 +383,13 @@ body.loading .modal {
 }
 @media (max-width:1198px){
     .logo {
-         margin-left: -14%;
-         width: 30%;
+        margin-left: -14%;
+        width: 30%;
     }
 }
 @media (max-width:990px){
     .logo {
-         margin-left: -16%;
-         width: 35%;
+        margin-left: -16%;
+        width: 35%;
     }
 }
