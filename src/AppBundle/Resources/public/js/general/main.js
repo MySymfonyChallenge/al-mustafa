@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    $('.attendence_form .submit').click(function () {
+    $('.attendence_form').submit(function (event) {
+        event.preventDefault();
         $(".attendence_form").ajaxSubmit({
             type: 'post',
             data: {location_id: $('#location_id').val()},
@@ -11,6 +12,7 @@ $(document).ready(function () {
             }
         });
     });
+
     $body = $("body");
     $(document).on({
         ajaxStart: function () {

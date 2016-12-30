@@ -2,24 +2,32 @@
 {% block content %}
 
     {% set imgPaths = [] %}
+    {% set links = [] %}
     {% for i in 1..5 %}
         {% if not ez_is_field_empty( content, "image#{i}" ) %}
             {% set imgAlias = ez_image_alias( content.getField( "image#{i}" ), content.versionInfo, 'teaser' ) %}
             {% set imgPaths = imgPaths|merge([ imgAlias.uri ]) %}
         {% endif %}
     {% endfor %}
+    {% for i in 1..5 %}
+        {% if not ez_is_field_empty( content, "image#{i}" ) %}
+            {% set link = ez_field_value(content, "image#{i}").alternativeText %}
+            {% set links = links|merge([ link ])%}
+        {% endif %}
+    {% endfor %}
     <div class="carousel-container container">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
             <ol class="carousel-indicators">
                 {% for path in imgPaths %}
                     <li data-target="#myCarousel" data-slide-to="{{loop.index}}" class="{% if loop.first %}active{% endif %}"></li>
-                    {% endfor %}
+                {% endfor %}
             </ol>
             <div class="carousel-inner" role="listbox">
-                {% for path in imgPaths %}
+                {% for key,path in imgPaths %}
                     <div class="item {% if loop.first %}active{% endif %}">
-                        <img class="img-responsive" alt="" src="{{ asset( path ) }}">
+                        {% if links[key] %}<a href="{{links[key]}}">{% endif %}
+                            <img class="img-responsive" alt="" src="{{ asset( path ) }}">
+                        {% if links[key] %}</a>{% endif %}
                     </div>
                 {% endfor %}
             </div>
@@ -31,12 +39,12 @@
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
-        </div><!-- /.carousel -->
+        </div>
     </div>
     <div class="homepage-bottom container">
         <div class="homepage-bottom-left col-md-6">
             <div class="col-md-10">
-                <h2>Veranstaltungen</h2>                
+                <h2><span id="diamond"></span>Veranstaltungen</h2>
                 <div>
                     {% for blog in items %}
                         <div class="homepage-blog-item">
