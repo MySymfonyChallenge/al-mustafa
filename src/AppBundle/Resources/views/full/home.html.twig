@@ -66,7 +66,6 @@
                 </div>                
             </div>
         </div>
-        <div class="home-seprator"></div>
         <div class="homepage-bottom-right col-md-6">
                 {% if not ez_is_field_empty( content, "image_bottom" ) %}                
                     {% set imgBottomAlias = (ez_image_alias( content.getField( "image_bottom"), content.versionInfo, 'homepage_bottom') ).uri %}
@@ -74,6 +73,7 @@
                 {% endif %}                
                 {% if not ez_is_field_empty( content, "title_bottom" ) %}
                     <h2>
+                        <span id="diamond"></span>
                         {{ez_field_value(content,'title_bottom')}}
                     </h2>
                 {% endif %}

@@ -103,12 +103,15 @@ body {
     padding-left: 0px;
     padding-right: 0px;
 }
-.homepage-bottom-left h2 {
+.homepage-bottom h2 {
     color: #b7965d;
     border-top: 2px solid;
     border-bottom: 2px solid;
     padding: 8px 0px;
     margin-top: 0px;
+}
+.homepage-bottom-right h2 {
+    margin-top: 20px;
 }
 .homepage-bottom-left img {
     float: left;
