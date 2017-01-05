@@ -175,6 +175,13 @@ body.loading {
 body.loading .modal {
     display: block;
 }
+.align-right {
+    float: right;
+    margin: 7px;
+}
+.homepage-blog-item a {
+    color: #b7965d;
+}
 
 #diamond {
     width: 0;
