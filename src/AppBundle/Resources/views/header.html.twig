@@ -1,10 +1,10 @@
-<div class="header-top"></div>
+<!-- <div class="header-top"></div> -->
 <div class="container header-container">
     <div class="name-header">
         {% if(app.user) %}
-            Hi {{ez_field_value(app.user.getAPIUser.content,'first_name')}}!<br />
+            <span class="diamond-icon"><img src="{{ asset('bundles/app/img/diamond.png') }}"></span>Salam {{ez_field_value(app.user.getAPIUser.content,'first_name')}}!<br />
         {% else %}
-            Hi!<br/>
+            <span class="diamond-icon"><img src="{{ asset('bundles/app/img/diamond.png') }}"></span> Salam!<br/>
         {% endif %}
     </div>
     <div class="links-header">
