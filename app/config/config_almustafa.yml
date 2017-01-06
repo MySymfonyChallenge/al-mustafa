@@ -3,7 +3,7 @@ imports:
     - { resource: views.yml }
 
 parameters:
-    mailer_transport:  smtp
+    mailer_transport:  sendmail
     mailer_host:       mailtrap.io
     mailer_user:       53236674ca83117ed
     mailer_password:   3976d6e7a03453
