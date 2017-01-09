@@ -179,6 +179,10 @@ body.loading .modal {
     float: right;
     margin: 7px;
 }
+.align-left {
+    float: left;
+    margin: 7px;
+}
 .homepage-blog-item a {
     color: #b7965d;
 }
@@ -264,6 +268,9 @@ body.loading .modal {
     height: 109px;
     float: left;
     margin-left: -50px;
+}
+.application_form i {
+    font-size: 12px;
 }
 @media (min-width: 768px) {
     .navbar-inverse .navbar-nav>li>a {

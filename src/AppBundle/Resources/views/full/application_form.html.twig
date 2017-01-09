@@ -5,67 +5,331 @@
 {% endjavascripts %}
 
 <div class="container">
-<div class="stepwizard">
-    <div class="stepwizard-row setup-panel">
-      <div class="stepwizard-step">
-        <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
-        <p>Personal Information</p>
-      </div>
-      <div class="stepwizard-step">
-        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-        <p>Education</p>
-      </div>
-      <div class="stepwizard-step">
-        <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-        <p>Freunde und Bekannte</p>
-      </div>
-      <div class="stepwizard-step">
-        <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
-        <p>Zertifikate</p>
-      </div>
+    <div class="stepwizard">
+        <div class="stepwizard-row setup-panel">
+            <div class="stepwizard-step">
+                <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+                <p>Persönliche Angaben</p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                <p>Ausbildung</p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                <p>Netzwerk</p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                <p>Anhänge</p>
+            </div>
+        </div>
     </div>
-  </div>
     {{ form_start(form, { 'attr': {'class': 'application_form'} },{'method': 'POST'}) }}
     <div class="row setup-content" id="step-1">
         <div class="col-md-12">
-          <h3>Personal Information</h3>
-          <div class="form-group">
-            <label class="control-label">First Name</label>
-            {{ form_widget(form.first_name, {'value' : ez_field_value(user.content,'first_name') }) }}
-          </div>
-          <div class="form-group">
-            <label class="control-label">Last Name</label>
-            {{ form_widget(form.last_name, {'value' : ez_field_value(user.content,'last_name')}) }}        
-          </div>
-          <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+            <h3>Persönliche Angaben</h3>
+            <div class="form-group">
+                <label class="control-label">Vorname*:</label>
+                {{ form_widget(form.first_name, {'value' : ez_field_value(user.content,'first_name') }) }}
+            </div>
+            <div class="form-group">
+                <label class="control-label">NachName*:</label>
+                {{ form_widget(form.last_name, {'value' : ez_field_value(user.content,'last_name')}) }}        
+            </div>
+            <div class="form-group">
+                <label class="control-label">Spitzname:</label>
+                {{ form_widget(form.nickname) }}        
+            </div>
+            <div class="form-group">
+                <label class="control-label">Straße*:</label>
+                {{ form_widget(form.street) }}        
+            </div>
+            <div class="form-group">
+                <label class="control-label">Hausnummer*:</label>
+                {{ form_widget(form.house_number) }}        
+            </div>
+            <div class="form-group">
+                <label class="control-label">PLZ*:</label>
+                {{ form_widget(form.postal_code) }}        
+            </div>
+            <div class="form-group">
+                <label class="control-label">Wohnort*:</label>
+                {{ form_widget(form.city) }}        
+            </div>
+            <div class="form-group">
+                <label class="control-label">Staat*:</label>
+                {{ form_widget(form.country) }}        
+            </div>
+            <div class="form-group">
+                <label class="control-label">Telefon*:</label>
+                {{ form_widget(form.tel) }}        
+            </div>
+            <div class="form-group">
+                <label class="control-label">Mobilnummer*:</label>
+                {{ form_widget(form.mobile) }}        
+            </div>
+            <div class="form-group">
+                <label class="control-label">E-Mail*:</label>
+                {{ form_widget(form.email) }}        
+            </div>
+            <div class="form-group">
+                <label class="control-label">Geschlecht*:</label>
+                {{ form_widget(form.gender) }}        
+            </div>         
+            <div class="form-group">
+                <label class="control-label">Geburtsdatum*:</label>
+                {{ form_widget(form.birthday) }}        
+            </div>          
+            <div class="form-group">
+                <label class="control-label">Geburtsort*:</label>
+                {{ form_widget(form.birth_city) }}        
+            </div>          
+            <div class="form-group">
+                <label class="control-label">Familienstand*:</label>
+                {{ form_widget(form.martial) }}        
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Anzahl der Kinder*:</label>
+                {{ form_widget(form.children) }}        
+            </div>
+            <div class="form-group">
+                <label class="control-label">Frühere Staatsangehörigkeit:</label>
+                {{ form_widget(form.earlier_citizenship) }}        
+            </div>
+            <div class="form-group">
+                <label class="control-label">Aktuelle Staatsangehörigkeit*:</label>
+                {{ form_widget(form.citizenship) }}        
+            </div>          
+            <div class="form-group">
+                <label class="control-label">Frühere Konfession:</label>
+                {{ form_widget(form.earlier_confession) }}        
+            </div>          
+            <div class="form-group">
+                <label class="control-label">Aktuelle Konfession*:</label>
+                {{ form_widget(form.confession) }}        
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Lebenslauf in zwei Absätzen:</label>
+                {{ form_widget(form.resume) }}        
+            </div>
+            <hr />
+            <fieldset>
+                <legend>Vater:</legend>
+                <div class="form-group">
+                    <label class="control-label">Vorname des Vaters*:</label>
+                    {{ form_widget(form.father_name) }}        
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Nachname des Vaters*:</label>
+                    {{ form_widget(form.father_lastname) }}        
+                </div>          
+                <div class="form-group">
+                    <label class="control-label">Aktuelle Konfession:</label>
+                    {{ form_widget(form.father_confession) }}        
+                </div>          
+                <div class="form-group">
+                    <label class="control-label">Aktuelle Staatsangehörigkeit:</label>
+                    {{ form_widget(form.father_citizenship) }}        
+                </div>          
+                <div class="form-group">
+                    <label class="control-label">Beruf:</label>
+                    {{ form_widget(form.father_job) }}        
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Ehepartner: <i>(Füllen Sie bitte das untenstehende Formular vollständig aus, wenn Sie verheiratet sind)</i></legend>
+                <div class="form-group">
+                    <label class="control-label">Vorname der Ehefrau:</label>
+                    {{ form_widget(form.spouse_name) }}        
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Nachname der Ehefrau:</label>
+                    {{ form_widget(form.spouse_lastname) }}        
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Aktuelle Konfession:</label>
+                    {{ form_widget(form.wife_confession) }}        
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Aktuelle Staatsangehörigkeit:</label>
+                    {{ form_widget(form.wife_citizenship) }}        
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Beruf:</label>
+                    {{ form_widget(form.wife_job) }}        
+                </div>
+            </fieldset>
+            <hr />
+            <div class="form-group">
+                <label class="control-label">Gesundheitliche Verfassung <i>(bitte erläutern)</i>:</label>
+                {{ form_widget(form.health_problems) }}        
+            </div>
+            <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
         </div>
     </div>
     <div class="row setup-content" id="step-2">
         <div class="col-md-12">
-          <h3> Step 2</h3>
-          <div class="form-group">
-            <label class="control-label">Geburstag</label>
-            {{ form_widget(form.birthday)}}
-          </div>
-          <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+            <h3>Ausbildung</h3>
+            <div class="form-group">
+                <label class="control-label">Abschluss*:</label>
+                {{ form_widget(form.degree)}}
+            </div>
+            <div class="form-group">
+                <label class="control-label">Fach*:</label>
+                {{ form_widget(form.major)}}
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ort der Ausbildung:</label>
+                {{ form_widget(form.education_city)}}
+            </div>
+            <div class="form-group">
+                <label class="control-label">Abschlussjahr:</label>
+                {{ form_widget(form.year_of_graduation)}}
+            </div>
+            <div class="form-group">
+                <label class="control-label">Notendurchschnitt*:</label>
+                {{ form_widget(form.average_grade)}}
+            </div>
+            <div class="form-group">
+                <label class="control-label">Note der Abschlussarbeit*:</label>
+                {{ form_widget(form.graduation_grade)}}
+            </div>
+            <fieldset>
+                <legend>Theologische Ausbildung <i>(falls Vorhanden)</i></legend>
+                <div class="form-group">
+                    <label class="control-label">Abschluss:</label>
+                    {{ form_widget(form.theology_certificate)}}
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Name der Schule:</label>
+                    {{ form_widget(form.theology_school)}}
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Ort der Ausbildung:</label>
+                    {{ form_widget(form.theology_school_location)}}
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Dauer der Ausbildung:</label>
+                    {{ form_widget(form.theology_study_length)}}
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Kenntnisse über Koran und islamisch Bücher</legend>
+                <div class="form-group">
+                    <label class="control-label">Ausmaß der Auswendigkeit des Qur’ans (in Qur’anabschnitten):</label>
+                    {{ form_widget(form.quran_proficiency)}}
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Islamische Bücher, die Sie vollständig gelesen haben:</label>
+                    {{ form_widget(form.islamic_books)}}
+                </div>
+            </fieldset>
+            <hr />
+            <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
         </div>
     </div>
     <div class="row setup-content" id="step-3">
         <div class="col-md-12">
-          <h3> Step 3</h3>
-          <div class="form-group">
-            <label class="control-label">Company Address</label>
-            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
-          </div>
-          <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+            <h3>Netzwerk</h3>
+            <p>Bitte geben Sie hier die Angaben von bekannten Personen in Ihrem Land, die über Sie Auskunft geben können.</p>
+            <div class="form-group">
+                <label class="control-label">Vorname*:</label>
+                {{ form_widget(form.reference_name)}}
+            </div>
+            <div class="form-group">
+                <label class="control-label">Nachname*:</label>
+                {{ form_widget(form.reference_lastname)}}
+            </div>
+            <div class="form-group">
+                <label class="control-label">Beruf*:</label>
+                {{ form_widget(form.reference_job)}}
+            </div>
+            <div class="form-group">
+                <label class="control-label">Telefon*:</label>
+                {{ form_widget(form.reference_tel)}}
+            </div>
+            <div class="form-group">
+                <label class="control-label">E-Mail:</label>
+                {{ form_widget(form.reference_email)}}
+            </div>
+            <div class="form-group">
+                <label class="control-label">Anschrift:</label>
+                {{ form_widget(form.reference_address)}}
+            </div>
+            <fieldset>
+                <legend>Iranische Freunde und Bekannte <i>(falls Vorhanden)</i></legend>
+                <div class="form-group">
+                    <label class="control-label">Vorname:</label>
+                    {{ form_widget(form.iranian_reference_name)}}
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Nachname:</label>
+                    {{ form_widget(form.iranian_reference_lastname)}}
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Beruf:</label>
+                    {{ form_widget(form.iranian_reference_job)}}
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Telefon:</label>
+                    {{ form_widget(form.iranian_reference_tel)}}
+                </div>
+                <div class="form-group">
+                    <label class="control-label">E-Mail:</label>
+                    {{ form_widget(form.iranian_reference_email)}}
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Anschrift:</label>
+                    {{ form_widget(form.iranian_reference_address)}}
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Auslandsreisen<i>(falls Vorhanden)</i></legend>
+                <div class="form-group">
+                    <label class="control-label">Staat:</label>
+                    {{ form_widget(form.countries_visited)}}
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Grund der Reise:</label>
+                    {{ form_widget(form.reason_visiting)}}
+                </div>
+            </fieldset>
+            <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
         </div>
-     </div>
-     <div class="row setup-content" id="step-4">
+    </div>
+    <div class="row setup-content" id="step-4">
         <div class="col-md-12">
-          <h3>Step 4</h3>
-          <button class="submit btn btn-success" type="button">Submit</button>
+            <h3>Anhänge</h3>
+            <div class="form-group">
+                <label class="control-label">Passfoto*:</label>
+                {{ form_widget(form.passport_photo)}}
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ausweis/Reisepass*:</label>
+                {{ form_widget(form.passport)}}
+            </div>
+            <div class="form-group">
+                <label class="control-label">Nachweis über Abschluss*:</label>
+                {{ form_widget(form.certificate)}}
+            </div>
+            <div class="form-group">
+                <label class="control-label">Nachweis über theologische Ausbildung:</label>
+                {{ form_widget(form.theology_certificate_scan)}}
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ehevertrag Nr. 1:</label>
+                {{ form_widget(form.marriage_certificate)}}
+            </div>                
+            <div class="form-group">
+                <label class="control-label">Ehevertrag Nr. 2:</label>
+                {{ form_widget(form.marriage_certificate1)}}
+            </div>
+            <button class="submit btn btn-success pull-right" type="button">Submit</button>
         </div>
-     </div>
+    </div>
     {{ form_end(form) }}
     <div id="resultUpdate"></div>
 </div>

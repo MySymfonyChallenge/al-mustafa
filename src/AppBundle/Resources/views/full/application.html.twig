@@ -1,10 +1,10 @@
 {% extends 'AppBundle::pagelayout.html.twig' %}
 
 {% block content %}
-    <h1>Application</h1>
-    <div>Application Description</div>
+    <h1>Online Bewerbung</h1>
+    <div></div>
     {% if (alreadyApplied) %}
-        <span>You have Already Applied for this Trip on {{alreadyApplied|date('m.d.Y H:i:s')}}</span>
+        <span>You have Already Applied to study on {{alreadyApplied|date('m.d.Y H:i:s')}}</span>
     {% else %}
         {% if notLoggedIn %}
             <div>Please <a href="{{path('login')}}">login</a> here to be able to register for this Trip.</div>
