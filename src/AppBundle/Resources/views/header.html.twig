@@ -5,7 +5,9 @@
         {% else %}
             <span class="diamond-icon"><img src="{{ asset('bundles/app/img/diamond.png') }}"></span>Salam!<br/>
         {% endif %}
-        <span class="diamond-icon"><img src="{{ asset('bundles/app/img/diamond.png') }}"></span>Herzlich Willkommen
+        <p class="welcome-message">
+            <span class="diamond-icon"><img src="{{ asset('bundles/app/img/diamond.png') }}"></span>Herzlich Willkommen
+        </p>
     </div>
     <div class="links-header">
         {% if(app.user) %}

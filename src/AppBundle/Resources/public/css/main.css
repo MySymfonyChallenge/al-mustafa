@@ -58,6 +58,7 @@ body {
     top: 25%;
     left: 0%;
     padding-left: 30px;
+    z-index: 20;
 }
 .links-header a {
     color: gray;
@@ -272,6 +273,12 @@ body.loading .modal {
 .application_form i {
     font-size: 12px;
 }
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #333;
+}
+.navbar-inverse .navbar-toggle:hover .icon-bar {
+    background-color: #fff;
+}
 @media (min-width: 768px) {
     .navbar-inverse .navbar-nav>li>a {
         float: left;
@@ -408,5 +415,10 @@ body.loading .modal {
     .logo {
         margin-left: -16%;
         width: 35%;
+    }
+}
+@media (max-width:444px){
+    .welcome-message {
+       display: none;
     }
 }
