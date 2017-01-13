@@ -14,6 +14,7 @@ parameters:
     app.contact_form.sender_email: no-reply@al-mustafa.de
     # e-mail address used as a message recipient
     app.contact_form.recipient_email: info@al-mustafa.de
+    app.contact_form.recipient_email_cc: amirkoklan@gmail.com
     
     app.applications.location_id: 121
 twig:
