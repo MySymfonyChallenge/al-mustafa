@@ -14,15 +14,17 @@ Class Notification {
     protected $templating;
     protected $senderEmail;
     protected $recipientEmail;
+    protected $recipientEmailBCC;
 
     public function __construct(
-    Swift_Mailer $mailer, TranslatorInterface $translator, Templating $templating, $senderEmail, $recipientEmail
+    Swift_Mailer $mailer, TranslatorInterface $translator, Templating $templating, $senderEmail, $recipientEmail, $recipientEmailBCC
     ) {
         $this->mailer = $mailer;
         $this->translator = $translator;
         $this->templating = $templating;
         $this->senderEmail = $senderEmail;
         $this->recipientEmail = $recipientEmail;
+        $this->recipientEmailBCC = $recipientEmailBCC;
     }
 
     public function send($contact = NULL) {
@@ -31,6 +33,7 @@ Class Notification {
                 ->setSubject($title)
                 ->setFrom($this->senderEmail)
                 ->setTo($this->recipientEmail)
+                ->setBcc($this->recipientEmailBCC)
                 ->setReplyTo($this->recipientEmail)
                 ->setContentType('text/html')
                 ->setBody(
