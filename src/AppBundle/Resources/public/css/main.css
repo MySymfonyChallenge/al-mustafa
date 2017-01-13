@@ -232,27 +232,6 @@ body.loading .modal {
 .blog-post-line-border #diamond-light {
     margin-right: 15px;
 }
-
-#base {
-    background: #E4AC4C;
-    display: inline-block;
-    height: 55px;
-    margin-left: 20px;
-    margin-top: 55px;
-    position: relative;
-    width: 100px;
-}
-#base:before {
-    border-bottom: 35px solid #E4AC4C;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    content: "";
-    height: 0;
-    left: 0;
-    position: absolute;
-    top: -35px;
-    width: 0;
-}
 .attendence_form label:after {
     content:" *";
 }
@@ -278,6 +257,9 @@ body.loading .modal {
 }
 .navbar-inverse .navbar-toggle:hover .icon-bar {
     background-color: #fff;
+}
+h1 {
+    font-size: 30px;
 }
 @media (min-width: 768px) {
     .navbar-inverse .navbar-nav>li>a {
