@@ -13,7 +13,7 @@ parameters:
     # e-mail address used for form submission
     app.contact_form.sender_email: no-reply@al-mustafa.de
     # e-mail address used as a message recipient
-    app.contact_form.recipient_email: info@al-mustafa.de
+    app.contact_form.recipient_email: mahdi313esf@yahoo.com 
     app.contact_form.recipient_email_cc: amirkoklan@gmail.com
     
     app.applications.location_id: 121

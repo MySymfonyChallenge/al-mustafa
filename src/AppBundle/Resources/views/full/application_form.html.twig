@@ -101,13 +101,17 @@
             <div class="form-group">
                 <label class="control-label">Aktuelle Staatsangehörigkeit*:</label>
                 {{ form_widget(form.citizenship) }}        
-            </div>          
+            </div>
+            <div class="form-group">
+                <label class="control-label">Religion:</label>
+                {{ form_widget(form.religion) }}        
+            </div> 
             <div class="form-group">
                 <label class="control-label">Frühere Konfession:</label>
                 {{ form_widget(form.earlier_confession) }}        
             </div>          
             <div class="form-group">
-                <label class="control-label">Aktuelle Konfession*:</label>
+                <label class="control-label">Aktuelle Konfession:</label>
                 {{ form_widget(form.confession) }}        
             </div>
 
@@ -142,11 +146,11 @@
             <fieldset>
                 <legend>Ehepartner: <i>(Füllen Sie bitte das untenstehende Formular vollständig aus, wenn Sie verheiratet sind)</i></legend>
                 <div class="form-group">
-                    <label class="control-label">Vorname der Ehefrau:</label>
+                    <label class="control-label">Vorname der Ehepartner:</label>
                     {{ form_widget(form.spouse_name) }}        
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Nachname der Ehefrau:</label>
+                    <label class="control-label">Nachname der Ehepartner:</label>
                     {{ form_widget(form.spouse_lastname) }}        
                 </div>
                 <div class="form-group">
@@ -182,11 +186,11 @@
                 {{ form_widget(form.major)}}
             </div>
             <div class="form-group">
-                <label class="control-label">Ort der Ausbildung:</label>
+                <label class="control-label">Ort der Ausbildung*:</label>
                 {{ form_widget(form.education_city)}}
             </div>
             <div class="form-group">
-                <label class="control-label">Abschlussjahr:</label>
+                <label class="control-label">Abschlussjahr*:</label>
                 {{ form_widget(form.year_of_graduation)}}
             </div>
             <div class="form-group">
@@ -260,7 +264,7 @@
                 {{ form_widget(form.reference_address)}}
             </div>
             <fieldset>
-                <legend>Iranische Freunde und Bekannte <i>(falls Vorhanden)</i></legend>
+                <legend>Muslimische Freunde und Bekannte <i>(falls Vorhanden)</i></legend>
                 <div class="form-group">
                     <label class="control-label">Vorname:</label>
                     {{ form_widget(form.iranian_reference_name)}}
@@ -320,12 +324,12 @@
                 {{ form_widget(form.theology_certificate_scan)}}
             </div>
             <div class="form-group">
-                <label class="control-label">Ehevertrag Nr. 1:</label>
-                {{ form_widget(form.marriage_certificate)}}
+                <label class="control-label">Andere 1:</label>
+                {{ form_widget(form.other1)}}
             </div>                
             <div class="form-group">
-                <label class="control-label">Ehevertrag Nr. 2:</label>
-                {{ form_widget(form.marriage_certificate1)}}
+                <label class="control-label">Andere 2:</label>
+                {{ form_widget(form.other2)}}
             </div>
             <button class="submit btn btn-success pull-right" type="button">Submit</button>
         </div>
