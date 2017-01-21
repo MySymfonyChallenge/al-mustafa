@@ -68,7 +68,7 @@ class ApplicationController extends Controller {
             if ($form->isValid() && !$alreadyApplied && $this->addAnApplication($form, $location, $data)) {
                 return new Response('<div class="alert alert-success">Das Formular ist erfolgreich versendet worden!</div>');
             } else {
-                return new Response('<div class="alert alert-danger">Beim Speichern Ihrer Formular ist ein Fehler aufgetreten oder Sie haben sich schon beworben.</div>');
+                return new Response('<div class="alert alert-danger">Beim Speichern Ihres Formulars ist ein Fehler aufgetreten oder Sie haben sich schon beworben.</div>');
             }
         }
         return $this->render("AppBundle:full:application.html.twig", ['form' => $form->createView(), 'alreadyApplied' => $alreadyApplied, 'notLoggedIn' => $notLoggedIn,'user' => $loggedinUser], new Response());

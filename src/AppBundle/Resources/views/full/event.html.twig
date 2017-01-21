@@ -7,12 +7,12 @@
         <div class="event-text">
             {{ ez_render_field( content, "description" ) }}
         </div>
-        <h2>Bewerbung für "{{ez_content_name(content)}}"</h2>
+        <h4>Bewerbung für "{{ez_content_name(content)}}"</h4>
         {% if (alreadyApplied) %}
             <h4>You have Already Applied for this Trip on {{alreadyApplied|date('d.m.Y H:i:s')}}</h4>
         {% else %}
             {% if "now"|date('Y-m-d') > ez_field_value( content, "deadline" )|date('Y-m-d')%}
-                <h4>Unfortunately the deadline for this trip has passed!</h4>
+                <h4>Die Anmeldefrist für diese Reise ist leider abgelaufen.</h4>
             {% else %}
                 {% if notLoggedIn %}
                     <h4>Please <a href="{{path('login')}}">login</a> here to be able to register for this Trip.</h4>
