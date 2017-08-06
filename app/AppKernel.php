@@ -14,7 +14,7 @@ class AppKernel extends Kernel
     /**
      * Returns an array of bundles to registers.
      *
-     * @return array An array of bundle instances.
+     * @return array an array of bundle instances
      *
      * @api
      */
@@ -36,6 +36,7 @@ class AppKernel extends Kernel
             new eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle(),
             new eZ\Bundle\EzPublishLegacySearchEngineBundle\EzPublishLegacySearchEngineBundle(),
             new eZ\Bundle\EzPublishIOBundle\EzPublishIOBundle(),
+            new EzSystems\MultiFileUploadBundle\EzSystemsMultiFileUploadBundle(),
             new eZ\Bundle\EzPublishRestBundle\EzPublishRestBundle(),
             new EzSystems\PlatformUIAssetsBundle\EzSystemsPlatformUIAssetsBundle(),
             new EzSystems\PlatformUIBundle\EzSystemsPlatformUIBundle(),
@@ -48,6 +49,7 @@ class AppKernel extends Kernel
             new EzSystems\EzPlatformSolrSearchEngineBundle\EzSystemsEzPlatformSolrSearchEngineBundle(),
             new Netgen\Bundle\EzFormsBundle\NetgenEzFormsBundle(),
             new EzSystems\EzContentOnTheFlyBundle\EzSystemsEzContentOnTheFlyBundle(),
+            new EzSystems\EzPlatformDesignEngineBundle\EzPlatformDesignEngineBundle(),
             new Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
             new JMS\TranslationBundle\JMSTranslationBundle(),
             new AppBundle\AppBundle(),

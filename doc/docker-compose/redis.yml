@@ -1,5 +1,9 @@
-version: '2'
+version: '2.1'
 # Redis config, to be appended after base-prod or base-dev, ..., but before selenium.yml
+
+## WARNING:
+# This service is currently work in progress, is not tested by CI, and thus not guaranteed to work.
+# You are however more then welcome to try it out and help make it stable.
 
 services:
   app:

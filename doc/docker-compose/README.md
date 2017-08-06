@@ -10,7 +10,7 @@
 
 ## Overview
 
-This setup requires Docker Compose 1.7 or higher, and Docker 1.10 or higher. Defaults are set in `.env`, and
+This setup requires Docker Compose 1.9 or higher, and Docker 1.12 or higher. Defaults are set in `.env`, and
 files to ignore are set in `.dockerignore`. By default `.env` specifies that production image is built and setup for use.
 _**NB:** For this and other reasons all docker-compose commands **must** be executed from root of your project directory._
 
@@ -27,15 +27,18 @@ installed on your machine.
 The current Docker Compose files are made to be mixed and matched togtehr as you'd like. Currently available:
 - base-prod.yml _(required, always needs to be first, contains: db, web and app container)_
 - base-dev.yml _(alternative to `base-prod.yml`, same applies here if used)_
-- redis.yml _(optional, adds redis service and appends config to app)_
-- solr.yml _(optional, work in progress config to add solr service and configure app for it, for testing only)_
 - blackfire.yml _(optional, adds blackfire service and lets you trigger profiling against the setup)_
 - selenium.yml _(optional, always needs to be last, adds selenium service and appends config to app)_
+
+In addition the following exists but are work in progress, thus not tested yet and are known to be somewhat broken:
+- redis.yml _(optional, adds redis service and appends config to app)_
+- varnish.yml _(optional, adds varnish service and appends config to app)_
+- solr.yml _(optional, add solr service and configure app for it)_
 
 
 These can be used with `-f` argument on docker-compose, like:
 ```bash
-docker-compose -f doc/docker-compose/base-prod.yml -f doc/docker-compose/redis.yml up -d --force-recreate
+docker-compose -f doc/docker-compose/base-prod.yml -f doc/docker-compose/blackfire.yml up -d --force-recreate
 ```
 
 However below environment variable `COMPOSE_FILE` is used instead since this is also what is used to have a default in
@@ -68,7 +71,7 @@ by default under the hood, which leads to much slower IO performance.*
 
 From root of your projects clone of this distribution, [setup composer auth.json](#composer) and execute the following:
 ```sh
-export COMPOSE_FILE=doc/docker-compose/base-dev.yml SYMFONY_ENV=dev SYMFONY_DEBUG=1
+export COMPOSE_FILE=doc/docker-compose/base-dev.yml
 
 # Optional: If you use Docker Machine with NFS, you'll need to specify where project is, & give composer a valid directory.
 #export COMPOSE_DIR=/data/SOURCES/MYPROJECTS/ezplatform/doc/docker-compose COMPOSER_HOME=/tmp
@@ -174,7 +177,7 @@ docker-compose down -v
 
 And if you have defined any environment variables you can unset them using:
 ```sh
-unset COMPOSE_FILE SYMFONY_ENV SYMFONY_DEBUG COMPOSE_DIR COMPOSER_HOME
+unset COMPOSE_FILE COMPOSE_DIR COMPOSER_HOME
 
 # To unset blackfire variables
 unset BLACKFIRE_SERVER_ID BLACKFIRE_SERVER_TOKEN

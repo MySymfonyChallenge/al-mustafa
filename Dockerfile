@@ -1,4 +1,4 @@
-FROM ezsystems/php:7.0-v1
+FROM ezsystems/php:7.1-v1
 
 # Build argument about keeping auth.json or not (by default on as prod images should'nt get updates via composer update)
 ARG REMOVE_AUTH=1
@@ -19,8 +19,8 @@ RUN mkdir -p web/var \
     && rm -Rf app/logs/* app/cache/*/* \
 # Fix permissions for www-data
     && chown -R www-data:www-data app/cache app/logs web/var \
-    && find app/cache app/logs web/var -type d | xargs chmod -R 775 \
-    && find app/cache app/logs web/var -type f | xargs chmod -R 664 \
+    && find app/cache app/logs web/var -type d -print0 | xargs -0 chmod -R 775 \
+    && find app/cache app/logs web/var -type f -print0 | xargs -0 chmod -R 664 \
 # Remove composer cache to avoid it taking space in image
     && rm -rf ~/.composer/*/* \
     && [ "$REMOVE_AUTH" = "1" ] && rm -f auth.json
