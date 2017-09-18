@@ -43,7 +43,8 @@
         "sensio/framework-extra-bundle": "~3.0",
         "netgen/ez-forms-bundle": "^1.3",
         "ezsystems/content-on-the-fly-prototype": "~0.1.7",
-        "willdurand/js-translation-bundle": "^2.6.4"
+        "willdurand/js-translation-bundle": "^2.6.4",
+        "roave/security-advisories": "dev-master"
     },
     "require-dev": {
         "ezsystems/ezplatform-i18n": "^1.0@dev",
@@ -91,7 +92,7 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "1.10.x-dev"
+            "dev-master": "1.11.x-dev"
         }
     }
 }
